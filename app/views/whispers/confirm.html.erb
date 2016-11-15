@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+
+   <h3>以下の内容で、送信する。</h3>
+   <%= form_for(@whisper) do |f| %>
+   <!-- `f.hidden_field`を使用して、リクエストパラメータに値を設定できるようにしています。 -->
+    <%= f.hidden_field :title %>
+    <%= f.hidden_field :content %>
+
+  <!-- @whisper.titleと@whisper.contentとすることで、表示用の値を画面に出力しています。 -->
+    <p>タイトル:<%= @whisper.title %></p>
+    <p>本文:<%= @whisper.content %></p>
+    <%= f.submit "ささやく",class: 'btn btn-primary btn-block' %>
+  <% end %>
+
+ <%= form_for(@whisper, url: new_whisper_path, method: 'get') do |f| %>
+    <%= f.hidden_field :title %>
+    <%= f.hidden_field :content %>
+    <%= f.submit "もどる", name: 'back', class: 'btn btn-default btn-block' %>
+  <% end %>
+ </div>
+</div>

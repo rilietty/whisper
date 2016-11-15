@@ -1,0 +1,17 @@
+
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <p><%= notice %></p>
+    <h1>ささやきリスト</h1>
+      <%= link_to "ささやく", new_whisper_path, class: 'btn btn-default btn-sm btn-danger active' %>
+      <% @whispers.each do |whisper| %>
+    <div class="row">
+      <h4><strong><%= whisper.title %></strong></h4>
+      <p><%= whisper.content %></p>
+      <%= link_to "編集", edit_whisper_path(whisper.id), class: 'btn btn-default btn-sm btn-danger active' %>
+      <%= link_to "削除", whisper_path(whisper.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-warning active' %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
