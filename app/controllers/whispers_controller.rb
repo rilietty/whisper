@@ -16,11 +16,10 @@ class WhispersController < ApplicationController
   def create
     @whisper = Whisper.new(whispers_params)
     if @whisper.save
-      # 一覧画面へ遷移して"ささやきました！"とメッセージを表示します。
-    redirect_to whispers_path, notice: "ささやきました！"
+     redirect_to whispers_path, notice: "ささやきました！"
     else
     #入力フォームを再描画。
-    render action: 'new'
+     render action: 'new'
     end
   end
  
@@ -30,12 +29,10 @@ class WhispersController < ApplicationController
   
   def update
     @whisper = Whisper.find(params[:id])
-  
     if @whisper.update(whispers_params)
-    redirect_to whispers_path, notice: "ささやきを削除しました！"
-    
+      redirect_to whispers_path, notice: "ささやきを削除しました！"
     else
-    render action: 'edit'
+      render action: 'edit'
     end
   end
   
